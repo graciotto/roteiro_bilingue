@@ -1668,3 +1668,43 @@ function abrirCleanupVideo(videoId) {
         fecharCleanupVideo
     );
 }
+
+/* =========================
+   GLOBAL FUNCTIONS
+========================= */
+
+window.abrirVideo = abrirVideo;
+
+window.fecharVideo = fecharVideo;
+
+window.mostrarSecao = mostrarSecao;
+
+window.abrirWeatherVideo =
+    abrirWeatherVideo;
+
+window.createClassroom =
+    createClassroom;
+
+window.addStudent =
+    addStudent;
+
+window.addToWheel =
+    addToWheel;
+
+window.removeFromWheel =
+    removeFromWheel;
+
+window.addAllToWheel =
+    addAllToWheel;
+
+window.resetWheel =
+    resetWheel;
+
+window.spinWheel =
+    spinWheel;
+
+window.exportData =
+    exportData;
+
+window.removeStudent =
+    removeStudent;
