@@ -1,0 +1,2689 @@
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    margin: 0;
+
+    font-family: 'Fredoka', sans-serif;
+
+    overflow-x: hidden;
+
+   background:
+    linear-gradient(
+        135deg,
+        #063940,
+        #195e63,
+        #3e838c,
+        #8ebdb6,
+        #ece1c3
+    );
+    background-size: 400% 400%;
+
+    animation:
+        animatedBackground 20s ease infinite;
+
+    transition:
+        background 1.5s ease;
+}
+
+/* FUNDO ANIMADO */
+
+@keyframes animatedBackground {
+
+    0% {
+
+        background-position: 0% 50%;
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9999;
+
+    padding: 16px 30px;
+
+    backdrop-filter: blur(18px);
+
+    background:
+        rgba(44, 62, 80, 0.75);
+
+    border-bottom:
+        2px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   MENU
+========================= */
+
+nav ul {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+
+    opacity: 0.7;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+
+    padding: 30px;
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+.secao {
+
+    display: none;
+}
+
+.ativa {
+
+    display: block;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.titulo-secao {
+
+    text-align: center;
+
+    font-size: 42px;
+
+    margin-top: 20px;
+
+    margin-bottom: 40px;
+
+    color: #2c3e50;
+}
+
+/* =========================
+   GRID DOS VÍDEOS
+========================= */
+
+.video-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    max-width: 1400px;
+
+    margin: 40px auto;
+}
+
+/* WEATHER VIDEOS */
+
+.weather-videos {
+
+    grid-template-columns: repeat(3, 1fr);
+
+    max-width: 1600px;
+}
+
+/* =========================
+   CARD DOS VÍDEOS
+========================= */
+
+.video-card {
+
+    aspect-ratio: 16 / 9;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    transition: 0.3s;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+    background: white;
+}
+
+.video-card:hover {
+
+    transform: scale(1.03);
+}
+
+.video-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player-container {
+
+    width: 95%;
+
+    max-width: 1600px;
+
+    margin: 30px auto;
+}
+
+.player-container iframe {
+
+    width: 100%;
+
+    height: 80vh;
+
+    border: none;
+
+    border-radius: 20px;
+}
+
+/* =========================
+   ESCONDER
+========================= */
+
+.hidden {
+
+    display: none;
+}
+
+/* =========================
+   BOTÃO FLUTUANTE
+========================= */
+
+.next-button {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #3498db;
+
+    color: white;
+
+    font-size: 34px;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+
+    z-index: 999;
+
+    transition: 0.3s;
+}
+
+.next-button:hover {
+
+    transform: scale(1.1);
+
+    background: #2980b9;
+}
+
+/* =========================
+   WEATHER BOARD
+========================= */
+
+.weather-board {
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.8fr 1fr 1fr;
+
+    gap: 18px;
+
+    max-width: 1700px;
+
+    margin: 35px auto 20px;
+
+    align-items: start;
+}
+
+/* =========================
+   COLUNAS
+========================= */
+
+.board-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+/* =========================
+   TÍTULOS DOS BLOCOS
+========================= */
+
+.board-title {
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.orange { background: #f39c12; }
+
+.blue { background: #3498db; }
+
+.green { background: #27ae60; }
+
+.red { background: #e74c3c; }
+
+.purple { background: #8e44ad; }
+
+/* =========================
+   CARDS
+========================= */
+
+.board-card {
+
+    padding: 16px;
+
+    border-radius: 28px;
+
+    text-align: center;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: black;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+    border: 5px solid rgba(255,255,255,0.4);
+}
+
+.board-card:hover {
+
+    transform: scale(1.03);
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.calendar-content {
+
+    background: #f4f4f4;
+
+    border-radius: 18px;
+
+    padding: 18px;  
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.calendar-month {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 18px;
+
+    color: #2c3e50;
+}
+
+.calendar-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 8px;
+}
+
+.calendar-grid div {
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+/* =========================
+   DIA ATUAL
+========================= */
+
+.current-day {
+
+    transform: scale(1.08);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+
+    border: 4px solid white;
+}
+
+/* =========================
+   MÊS ATUAL
+========================= */
+
+.current-month {
+
+    transform: scale(1.08);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+
+    border: 4px solid white;
+}
+
+/* =========================
+   ESTAÇÕES
+========================= */
+
+/* VERÃO */
+
+.season-summer {
+
+    background: #f1c40f;
+}
+
+/* OUTONO */
+
+.season-autumn {
+
+    background: #e67e22;
+}
+
+/* INVERNO */
+
+.season-winter {
+
+    background: #3498db;
+}
+
+/* PRIMAVERA */
+
+.season-spring {
+
+    background: #2ecc71;
+}
+
+/* =========================
+   SEASONS
+========================= */
+
+.seasons-wrapper {
+
+    width: 100%;
+
+    margin-top: 20px;
+}
+
+/* TÍTULOS */
+
+.seasons-titles {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 18px;
+}
+
+.season-label {
+
+    text-align: center;
+
+    padding: 10px;
+
+    border-radius: 20px;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: black;
+}
+
+/* CORES */
+
+.summer-label {
+
+    background: #f4d35e;
+}
+
+.autumn-label {
+
+    background: #f4a261;
+}
+
+.winter-label {
+
+    background: #5dade2;
+
+    color: black;
+}
+
+.spring-label {
+
+    background: #7ed957;
+}
+
+/* IMAGENS */
+
+.seasons-images {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.season-image-card {
+
+    background: #f4d35e;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: 0.3s;
+
+    border: 5px solid transparent;
+}
+
+/* IMAGENS */
+
+.season-image-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+}
+
+/* CORES INDIVIDUAIS */
+
+.seasons-images .season-image-card:nth-child(1) {
+
+    background: #f4d35e;
+}
+
+.seasons-images .season-image-card:nth-child(2) {
+
+    background: #fca311;
+}
+
+.seasons-images .season-image-card:nth-child(3) {
+
+    background: #0b5ed7;
+}
+
+.seasons-images .season-image-card:nth-child(4) {
+
+    background: #f4978e;
+}
+
+/* ESTAÇÃO ATIVA */
+
+.active-season {
+
+    border: 6px solid white;
+
+    transform: scale(1.05);
+}
+
+/* DAYS */
+
+.days-column .board-card:nth-child(2) {
+    background: #7ed957;
+}
+
+.days-column .board-card:nth-child(3) {
+    background: #f4d35e;
+}
+
+.days-column .board-card:nth-child(4) {
+    background: #ff6b4a;
+}
+
+.days-column .board-card:nth-child(5) {
+    background: #ff3131;
+}
+
+.days-column .board-card:nth-child(6) {
+    background: #f15bb5;
+}
+
+.days-column .board-card:nth-child(7) {
+    background: #8b5cf6;
+}
+
+.days-column .board-card:nth-child(8) {
+    background: #0b5ed7;
+}
+
+/* MONTHS */
+
+.months-column .board-card:nth-child(2),
+.months-column .board-card:nth-child(3) {
+
+    background: #f4d35e;
+}
+
+.months-column .board-card:nth-child(4),
+.months-column .board-card:nth-child(5),
+.months-column .board-card:nth-child(6) {
+
+    background: #fca311;
+}
+
+.months-column .board-card:nth-child(7),
+.months-column .board-card:nth-child(8),
+.months-column .board-card:nth-child(9) {
+
+    background: #0b5ed7;
+
+    color: white;
+}
+
+.months-column .board-card:nth-child(10),
+.months-column .board-card:nth-child(11) {
+
+    background: #f28482;
+}
+
+.months-column .board-card:nth-child(12) {
+
+    background: #ff8fab;
+}
+
+.months-column .board-card:nth-child(13) {
+
+    background: #f4d35e;
+}
+
+/* =========================
+   MONTHS MAIS COMPACTOS
+========================= */
+
+.months-column .board-card {
+
+    padding: 8px;
+
+    font-size: 16px;
+
+    border-radius: 18px;
+}
+
+/* =========================
+   SUNNY EFFECT
+========================= */
+
+.sun-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition: opacity 0.6s;
+
+    z-index: 5;
+
+    overflow: hidden;
+
+    background: rgba(255, 220, 120, 0.12);
+
+    backdrop-filter: blur(4px);
+}
+
+/* SOL */
+
+.sun {
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+        #ffe066 0%,
+        #ffd43b 40%,
+        #fab005 70%);
+
+    left: 50%;
+
+    bottom: -500px;
+
+    transform: translateX(-50%);
+
+    transition: 1s ease;
+
+    box-shadow:
+        0 0 80px #ffd43b,
+        0 0 140px #fab005,
+        0 0 220px rgba(255, 212, 59, 0.6);
+
+    animation: sunPulse 3s infinite ease-in-out;
+}
+
+/* RAIOS */
+
+.sun::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -120px;
+
+    border-radius: 50%;
+
+    background:
+        repeating-conic-gradient(
+            #ffd43b 0deg 12deg,
+            transparent 12deg 24deg
+        );
+
+    animation: spinSun 18s linear infinite;
+
+    opacity: 0.8;
+}
+
+/* BRILHO CENTRAL */
+
+.sun::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 60px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+        rgba(255,255,255,0.7) 0%,
+        transparent 70%);
+}
+
+/* ATIVO */
+
+.sun-overlay.active {
+
+    opacity: 1;
+}
+
+.sun-overlay.active .sun {
+
+    bottom: -80px;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes spinSun {
+
+    from {
+
+        transform: rotate(0deg);
+    }
+
+    to {
+
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sunPulse {
+
+    0% {
+
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+
+        transform: translateX(-50%) scale(1.05);
+    }
+
+    100% {
+
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* =========================
+   RAIN EFFECT
+========================= */
+
+.rain-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.5s;
+
+    z-index: 6;
+
+    background: rgba(60, 70, 85, 0.18);
+
+    backdrop-filter: blur(5px);
+}
+
+/* CHUVA ATIVA */
+
+.rain-overlay.active {
+
+    opacity: 1;
+}
+
+/* GOTAS */
+
+.raindrop {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 90px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(180,220,255,0.9)
+    );
+
+    border-radius: 999px;
+
+    animation: rainFall linear infinite;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes rainFall {
+
+    from {
+
+        transform: translateY(-120px);
+    }
+
+    to {
+
+        transform: translateY(120vh);
+    }
+}
+
+/* =========================
+   CLOUDY EFFECT
+========================= */
+
+.cloud-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.8s;
+
+    z-index: 4;
+
+    /* ESCURECER TELA */
+
+    background:
+        rgba(120, 130, 145, 0.18);
+
+    backdrop-filter: blur(5px);
+}
+
+/* ATIVO */
+
+.cloud-overlay.active {
+
+    opacity: 1;
+}
+
+/* NUVENS */
+
+.cloud {
+
+    position: absolute;
+
+    background: #dfe6eb;
+
+    border-radius: 999px;
+
+    filter:
+        drop-shadow(0 8px 18px rgba(0,0,0,0.15));
+
+    transition:
+        left 1.5s ease,
+        right 1.5s ease;
+
+    animation:
+        cloudFloat 5s ease-in-out infinite;
+}
+
+/* BOLHAS DAS NUVENS */
+
+.cloud::before,
+.cloud::after {
+
+    content: "";
+
+    position: absolute;
+
+    background: #dfe6eb;
+
+    border-radius: 50%;
+}
+
+/* CLOUD 1 */
+
+.cloud1 {
+
+    width: 340px;
+
+    height: 110px;
+
+    top: 5%;
+
+    left: -450px;
+
+    animation-delay: 0s;
+}
+
+.cloud1::before {
+
+    width: 130px;
+
+    height: 130px;
+
+    top: -55px;
+
+    left: 40px;
+}
+
+.cloud1::after {
+
+    width: 170px;
+
+    height: 170px;
+
+    top: -75px;
+
+    right: 25px;
+}
+
+/* CLOUD 2 */
+
+.cloud2 {
+
+    width: 420px;
+
+    height: 130px;
+
+    top: 22%;
+
+    right: -550px;
+
+    animation-delay: 1s;
+}
+
+.cloud2::before {
+
+    width: 170px;
+
+    height: 170px;
+
+    top: -70px;
+
+    left: 60px;
+}
+
+.cloud2::after {
+
+    width: 200px;
+
+    height: 200px;
+
+    top: -90px;
+
+    right: 35px;
+}
+
+/* CLOUD 3 */
+
+.cloud3 {
+
+    width: 360px;
+
+    height: 120px;
+
+    bottom: 8%;
+
+    left: -450px;
+
+    animation-delay: 2s;
+}
+
+.cloud3::before {
+
+    width: 140px;
+
+    height: 140px;
+
+    top: -60px;
+
+    left: 40px;
+}
+
+.cloud3::after {
+
+    width: 180px;
+
+    height: 180px;
+
+    top: -80px;
+
+    right: 30px;
+}
+
+/* CLOUD 4 */
+
+.cloud4 {
+
+    width: 260px;
+
+    height: 90px;
+
+    top: 48%;
+
+    right: -350px;
+
+    animation-delay: 1.5s;
+}
+
+.cloud4::before {
+
+    width: 100px;
+
+    height: 100px;
+
+    top: -40px;
+
+    left: 30px;
+}
+
+.cloud4::after {
+
+    width: 120px;
+
+    height: 120px;
+
+    top: -50px;
+
+    right: 20px;
+}
+
+/* CLOUD 5 */
+
+.cloud5 {
+
+    width: 220px;
+
+    height: 80px;
+
+    top: 70%;
+
+    right: -300px;
+
+    opacity: 0.9;
+
+    animation-delay: 2.5s;
+}
+
+.cloud5::before {
+
+    width: 90px;
+
+    height: 90px;
+
+    top: -35px;
+
+    left: 25px;
+}
+
+.cloud5::after {
+
+    width: 110px;
+
+    height: 110px;
+
+    top: -45px;
+
+    right: 20px;
+}
+
+/* CLOUD 6 */
+
+.cloud6 {
+
+    width: 500px;
+
+    height: 150px;
+
+    top: 35%;
+
+    left: -650px;
+
+    opacity: 0.9;
+
+    animation-delay: 0.5s;
+}
+
+.cloud6::before {
+
+    width: 220px;
+
+    height: 220px;
+
+    top: -90px;
+
+    left: 70px;
+}
+
+.cloud6::after {
+
+    width: 240px;
+
+    height: 240px;
+
+    top: -100px;
+
+    right: 40px;
+}
+
+/* CLOUD 7 */
+
+.cloud7 {
+
+    width: 420px;
+
+    height: 130px;
+
+    top: 60%;
+
+    right: -600px;
+
+    opacity: 0.85;
+
+    animation-delay: 3s;
+}
+
+.cloud7::before {
+
+    width: 180px;
+
+    height: 180px;
+
+    top: -70px;
+
+    left: 50px;
+}
+
+.cloud7::after {
+
+    width: 200px;
+
+    height: 200px;
+
+    top: -80px;
+
+    right: 35px;
+}
+
+/* POSIÇÕES */
+
+.cloud-overlay.active .cloud1 {
+
+    left: 2%;
+}
+
+.cloud-overlay.active .cloud2 {
+
+    right: 2%;
+}
+
+.cloud-overlay.active .cloud3 {
+
+    left: 18%;
+}
+
+.cloud-overlay.active .cloud4 {
+
+    right: 22%;
+}
+
+.cloud-overlay.active .cloud5 {
+
+    right: 8%;
+}
+
+.cloud-overlay.active .cloud6 {
+
+    left: 8%;
+}
+
+.cloud-overlay.active .cloud7 {
+
+    right: 12%;
+}
+
+/* FLUTUAÇÃO */
+
+@keyframes cloudFloat {
+
+    0% {
+
+        transform: translateY(0px);
+    }
+
+    50% {
+
+        transform: translateY(-12px);
+    }
+
+    100% {
+
+        transform: translateY(0px);
+    }
+}
+
+/* =========================
+   PARTLY CLOUDY
+========================= */
+
+.partly-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.8s;
+
+    z-index: 5;
+   
+    background: rgba(170, 210, 255, 0.12);
+
+    backdrop-filter: blur(4px);
+}
+
+.partly-overlay.active {
+
+    opacity: 1;
+}
+
+/* =========================
+   SOL
+========================= */
+
+.partly-sun {
+
+    position: absolute;
+
+    width: 260px;
+
+    height: 260px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+        #ffe066 0%,
+        #ffd43b 40%,
+        #fab005 70%);
+
+    left: -250px;
+
+    bottom: -250px;
+
+    transition:
+        left 1.4s ease,
+        bottom 1.4s ease;
+
+    box-shadow:
+        0 0 80px #ffd43b,
+        0 0 140px #fab005,
+        0 0 220px rgba(255,212,59,0.5);
+
+    animation:
+        sunPulse 3s infinite ease-in-out;
+}
+
+/* RAIOS */
+
+.partly-sun::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -70px;
+
+    border-radius: 50%;
+
+    background:
+        repeating-conic-gradient(
+            #ffd43b 0deg 12deg,
+            transparent 12deg 24deg
+        );
+
+    animation:
+        spinSun 18s linear infinite;
+
+    opacity: 0.8;
+}
+
+/* POSIÇÃO */
+
+.partly-overlay.active .partly-sun {
+
+    left: 15%;
+
+    bottom: 58%;
+}
+
+/* =========================
+   NUVENS
+========================= */
+
+.part-cloud {
+
+    position: absolute;
+
+    background: #dfe6eb;
+
+    border-radius: 999px;
+
+    filter:
+        drop-shadow(0 8px 18px rgba(0,0,0,0.12));
+
+    animation:
+        cloudFloat 5s ease-in-out infinite;
+
+    transition: 1.4s ease;
+}
+
+/* BOLHAS */
+
+.part-cloud::before,
+.part-cloud::after {
+
+    content: "";
+
+    position: absolute;
+
+    background: #dfe6eb;
+
+    border-radius: 50%;
+}
+
+/* CLOUD 1 */
+
+.part-cloud1 {
+
+    width: 260px;
+
+    height: 85px;
+
+    top: 12%;
+
+    right: -350px;
+}
+
+.part-cloud1::before {
+
+    width: 100px;
+
+    height: 100px;
+
+    top: -40px;
+
+    left: 30px;
+}
+
+.part-cloud1::after {
+
+    width: 130px;
+
+    height: 130px;
+
+    top: -55px;
+
+    right: 20px;
+}
+
+/* CLOUD 2 */
+
+.part-cloud2 {
+
+    width: 320px;
+
+    height: 100px;
+
+    top: 25%;
+
+    right: -420px;
+
+    animation-delay: 1s;
+}
+
+.part-cloud2::before {
+
+    width: 120px;
+
+    height: 120px;
+
+    top: -50px;
+
+    left: 40px;
+}
+
+.part-cloud2::after {
+
+    width: 150px;
+
+    height: 150px;
+
+    top: -65px;
+
+    right: 25px;
+}
+
+/* CLOUD 3 */
+
+.part-cloud3 {
+
+    width: 220px;
+
+    height: 75px;
+
+    bottom: 18%;
+
+    left: -300px;
+
+    animation-delay: 2s;
+}
+
+.part-cloud3::before {
+
+    width: 90px;
+
+    height: 90px;
+
+    top: -35px;
+
+    left: 25px;
+}
+
+.part-cloud3::after {
+
+    width: 110px;
+
+    height: 110px;
+
+    top: -45px;
+
+    right: 20px;
+}
+
+/* POSIÇÕES */
+
+.partly-overlay.active .part-cloud1 {
+
+    right: 20%;
+}
+
+.partly-overlay.active .part-cloud2 {
+
+    right: 5%;
+}
+
+.partly-overlay.active .part-cloud3 {
+
+    left: 10%;
+}
+
+/* =========================
+   WEATHER/TEMP CARDS
+========================= */
+
+.weather-card,
+.temp-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: white;
+
+    box-shadow:
+        0 6px 14px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+}
+
+/* ÍCONES */
+
+.weather-icon {
+
+    font-size: 34px;
+
+    animation:
+        iconFloat 3s ease-in-out infinite;
+}
+
+/* HOVER */
+
+.weather-card:hover,
+.temp-card:hover {
+
+    transform:
+        scale(1.05)
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.22);
+}
+
+/* WEATHER COLORS */
+
+.sunny {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd43b,
+            #fab005
+        );
+}
+
+.cloudy {
+
+    background:
+        linear-gradient(
+            135deg,
+            #adb5bd,
+            #868e96
+        );
+}
+
+.rainy {
+
+    background:
+        linear-gradient(
+            135deg,
+            #5c677d,
+            #343a40
+        );
+}
+
+.partly {
+
+    background:
+        linear-gradient(
+            135deg,
+            #74c0fc,
+            #ffd43b
+        );
+}
+
+/* TEMP COLORS */
+
+.hot {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6b6b,
+            #e03131
+        );
+}
+
+.warm {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffa94d,
+            #ff922b
+        );
+}
+
+.cool {
+
+    background:
+        linear-gradient(
+            135deg,
+            #69db7c,
+            #2f9e44
+        );
+}
+
+.cold {
+
+    background:
+        linear-gradient(
+            135deg,
+            #74c0fc,
+            #1c7ed6
+        );
+}
+
+/* ANIMAÇÃO ÍCONES */
+
+@keyframes iconFloat {
+
+    0% {
+
+        transform: translateY(0px);
+    }
+
+    50% {
+
+        transform: translateY(-4px);
+    }
+
+    100% {
+
+        transform: translateY(0px);
+    }
+}
+
+/* =========================
+   WHEEL
+========================= */
+
+.wheel-layout {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 30px;
+
+    max-width: 1600px;
+
+    margin: auto;
+}
+
+/* ROLETA */
+
+.wheel-area {
+
+    background: white;
+
+    border-radius: 30px;
+
+    padding: 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* PLACEHOLDER */
+
+/* =========================
+   CANVAS ROLETA
+========================= */
+
+#wheelCanvas {
+
+    width: 500px;
+
+    height: 500px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.2);
+
+    border: 12px solid #ff922b;
+}
+
+/* BOTÃO */
+
+.spin-button {
+
+    margin-top: 30px;
+
+    padding: 18px 50px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: #ff6b6b;
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.spin-button:hover {
+
+    transform: scale(1.05);
+}
+
+/* CONTROLES */
+
+.wheel-controls {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+/* PAINÉIS */
+
+.wheel-panel {
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.08);
+}
+
+.wheel-panel h2 {
+
+    margin-top: 0;
+
+    color: #2c3e50;
+}
+
+/* INPUTS */
+
+.classroom-create,
+.student-create {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.wheel-panel input,
+.wheel-panel select {
+
+    flex: 1;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    border: 2px solid #dfe6e9;
+
+    font-size: 16px;
+}
+
+/* BOTÕES */
+
+.wheel-panel button,
+.import-button {
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #74c0fc;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    display: inline-block;
+
+    margin-top: 10px;
+}
+
+.wheel-panel button:hover,
+.import-button:hover {
+
+    transform: scale(1.03);
+}
+
+/* LISTA */
+
+.students-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+/* ALUNO */
+
+.student-item {
+
+    background: #f1f3f5;
+
+    padding: 12px 16px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.student-item button {
+
+    background: #ff6b6b;
+
+    padding: 8px 12px;
+
+    margin: 0;
+}
+
+.student-buttons button {
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* BOTÃO ADICIONAR */
+
+.student-buttons button:first-child {
+
+    background: #51cf66;
+
+    color: white;
+}
+
+.student-buttons button:first-child:hover {
+
+    background: #40c057;
+
+    transform: scale(1.08);
+}
+
+/* BOTÃO EXCLUIR */
+
+.delete-student {
+
+    background: #ff4d6d !important;
+
+    color: white;
+}
+
+.delete-student:hover {
+
+    background: #e63956 !important;
+
+    transform: scale(1.08);
+}
+
+.delete-student {
+
+    background: #ff4d6d !important;
+}
+
+.delete-student:hover {
+
+    background: #e63956 !important;
+}
+
+.wheel-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin: 15px 0;
+}
+
+.wheel-actions button {
+
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #ff4d6d;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.wheel-actions button:hover {
+
+    transform: scale(1.05);
+}
+
+/* =========================
+   WINNER POPUP
+========================= */
+
+.winner-popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.45);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 99999;
+
+    animation: fadeIn 0.4s ease;
+}
+
+.winner-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff176,
+            #ffd43b
+        );
+
+    padding: 50px;
+
+    border-radius: 40px;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 40px rgba(255,255,255,0.8);
+
+    animation:
+        winnerPop 0.6s ease;
+
+    min-width: 500px;
+}
+
+.winner-card h2 {
+
+    font-size: 42px;
+
+    color: #ff6b6b;
+
+    margin-bottom: 25px;
+}
+
+.winner-name {
+
+    font-size: 64px;
+
+    font-weight: 900;
+
+    color: #2c3e50;
+
+    margin-bottom: 35px;
+
+    animation:
+        pulseWinner 1s infinite;
+}
+
+.winner-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.winner-buttons button {
+
+    border: none;
+
+    padding: 16px 28px;
+
+    border-radius: 18px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.winner-buttons button:first-child {
+
+    background: #ff6b6b;
+
+    color: white;
+}
+
+.winner-buttons button:last-child {
+
+    background: #51cf66;
+
+    color: white;
+}
+
+.winner-buttons button:hover {
+
+    transform: scale(1.08);
+}
+
+/* ANIMAÇÕES */
+
+@keyframes winnerPop {
+
+    0% {
+
+        transform:
+            scale(0.5)
+            rotate(-8deg);
+
+        opacity: 0;
+    }
+
+    100% {
+
+        transform:
+            scale(1)
+            rotate(0);
+
+        opacity: 1;
+    }
+}
+
+@keyframes pulseWinner {
+
+    0% {
+
+        transform: scale(1);
+    }
+
+    50% {
+
+        transform: scale(1.08);
+    }
+
+    100% {
+
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+    }
+
+    to {
+
+        opacity: 1;
+    }
+}
+
+.hidden {
+
+    display: none !important;
+}
+
+/* =========================
+   GAMES GRID
+========================= */
+
+.games-grid {
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 22px;
+}
+
+/* NÚMERO */
+
+.game-number {
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 12px;
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #ff4d6d;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    z-index: 10;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* NECESSÁRIO */
+
+.games-grid .video-card {
+
+    position: relative;
+}
+
+/* =========================
+   CIRCLE TIME
+========================= */
+
+.one-video-grid {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 40px auto;
+}
+
+.one-video-grid .video-card {
+
+    position: relative;
+
+    width: 60vw;
+
+    max-width: 1700px;
+
+    aspect-ratio: 16 / 9;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.one-video-grid .video-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.one-video-grid .game-number {
+
+    position: absolute;
+
+    top: 25px;
+
+    left: 25px;
+
+    background: #ff6b6b;
+
+    color: white;
+
+    padding: 14px 26px;
+
+    border-radius: 24px;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    z-index: 5;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   CLEAN UP
+========================= */
+
+.cleanup-video-grid {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 40px auto;
+}
+
+.cleanup-video-grid .video-card {
+
+    position: relative;
+
+    width: 60vw;
+
+    max-width: 1500px;
+
+    aspect-ratio: 16 / 9;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.cleanup-video-grid .video-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.cleanup-video-grid .game-number {
+
+    position: absolute;
+
+    top: 25px;
+
+    left: 25px;
+
+    background: #4caf50;
+
+    color: white;
+
+    padding: 14px 26px;
+
+    border-radius: 24px;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    z-index: 5;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   BYE BYE SONGS
+========================= */
+
+.bye-grid {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 35px;
+
+    flex-wrap: wrap;
+
+    margin: 50px auto;
+}
+
+.bye-card {
+
+    position: relative;
+
+    width: 26vw;
+
+    min-width: 320px;
+
+    max-width: 520px;
+
+    aspect-ratio: 16 / 9;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.bye-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.bye-label {
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 20px;
+
+    background: #ff8fab;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 22px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    z-index: 5;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   TIMERS
+========================= */
+
+.timers-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 35px;
+
+    justify-items: center;
+
+    align-items: center;
+
+    margin: 50px auto;
+
+    max-width: 1200px;
+}
+
+.timer-card {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    aspect-ratio: 16 / 9;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.timer-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.timer-label {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 18px;
+
+    background: #4dabf7;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 22px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    z-index: 5;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   LISTAS DA ROLETA
+========================= */
+
+.students-box {
+
+    max-height: 320px;
+
+    overflow-y: auto;
+
+    padding-right: 8px;
+}
+
+/* SCROLL BONITA */
+
+.students-box::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+.students-box::-webkit-scrollbar-track {
+
+    background: #e9ecef;
+
+    border-radius: 20px;
+}
+
+.students-box::-webkit-scrollbar-thumb {
+
+    background: #74c0fc;
+
+    border-radius: 20px;
+}
+
+.students-box::-webkit-scrollbar-thumb:hover {
+
+    background: #4dabf7;
+}
+
+/* =========================
+   BACKGROUNDS
+========================= */
+
+body {
+
+    transition:
+        background 2s ease;
+}
+
+/* PADRÃO */
+
+.bg-default {
+
+    background:
+        linear-gradient(
+            135deg,
+            #063940,
+            #195e63,
+            #3e838c,
+            #8ebdb6,
+            #ece1c3
+        );
+
+    background-size: 400% 400%;
+
+    animation:
+        animatedBackground 20s ease infinite;
+}
+
+/* SUNNY */
+
+.bg-sunny {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #3e838c,
+            #8ebdb6,
+            #ece1c3
+        );
+}
+
+/* CLOUDY */
+
+.bg-cloudy {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #195e63,
+            #3e838c,
+            #8ebdb6
+        );
+}
+
+/* RAINY */
+
+.bg-rainy {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #063940,
+            #195e63,
+            #3e838c
+        );
+}
+
+/* PARTLY */
+
+.bg-partly {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #195e63,
+            #3e838c,
+            #ece1c3
+        );
+}
+
