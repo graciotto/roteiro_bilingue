@@ -612,7 +612,7 @@ async function loadData() {
     try {
 
         const snap =
-            await getDoc(
+            await getDoc( 
                 doc(
                     db,
                     "wheel",
