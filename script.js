@@ -1,3 +1,47 @@
+/* =========================
+   FIREBASE
+========================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* CONFIG */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyD1klD2pIp9OVFKKT9P0rKx6QnCUA1chQQ",
+
+    authDomain: "roteiro-bilingue.firebaseapp.com",
+
+    projectId: "roteiro-bilingue",
+
+    storageBucket: "roteiro-bilingue.firebasestorage.app",
+
+    messagingSenderId: "791175942403",
+
+    appId: "1:791175942403:web:973de41f38fd91761c5936"
+};
+
+/* INICIAR */
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getFirestore(app);
+
+console.log(
+    "Firebase conectado!"
+);
+
 function mostrarSecao(id) {
 
     const secoes = document.querySelectorAll('.secao');
@@ -568,12 +612,47 @@ async function saveData() {
 
     await setDoc(
 
-        doc(db, "wheel", "classrooms"),
+        doc(
+            db,
+            "wheel",
+            "classrooms"
+        ),
 
         {
             data: classrooms
         }
     );
+}
+
+async function loadData() {
+
+    try {
+
+        const snap =
+            await getDoc(
+                doc(
+                    db,
+                    "wheel",
+                    "classrooms"
+                )
+            );
+
+        if (snap.exists()) {
+
+            classrooms =
+                snap.data().data || {};
+        }
+
+        updateClassroomSelect();
+
+        drawWheel();
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+    }
 }
 
 /* =========================
@@ -980,7 +1059,7 @@ document
 let canvas;
 let ctx;
 
-window.addEventListener('load', () => {
+window.onload = async () => {
 
     canvas =
         document.getElementById(
@@ -989,11 +1068,9 @@ window.addEventListener('load', () => {
 
     ctx =
         canvas.getContext('2d');
-    console.log(canvas);
-    console.log(ctx);
 
-    loadData();
-});
+    await loadData();
+};
 
 let wheelRotation = 0;
 
