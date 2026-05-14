@@ -560,23 +560,6 @@ function abrirWeatherVideo(videoId) {
 
 let classrooms = {};
 
-async function loadData() {
-
-    const snap =
-        await getDoc(
-            doc(db, "wheel", "classrooms")
-        );
-
-    if (snap.exists()) {
-
-        classrooms =
-            snap.data().data || {};
-    }
-
-    updateClassroomSelect();
-
-    drawWheel();
-}
 
 /* TURMA ATUAL */
 
