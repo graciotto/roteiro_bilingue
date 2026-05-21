@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Roteiro de Aula</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONTE INFANTIL -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-default">
+
+<!-- ===================================== -->
+<!-- MENU -->
+<!-- ===================================== -->
+
+<header>
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('hello')">
+                    Hello Songs
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('weather')">
+                    Weather
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('wheel')">
+                    Spin The Wheel
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('games')">
+                    Games
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('circle')">
+                    Circle Time
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('cleanup')">
+                    Clean Up
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="mostrarSecao('bye')">
+                    Bye Bye Songs
+                </a>
+            </li>
+
+            <li>
+    <a href="#"
+       onclick="mostrarSecao('timers')">
+
+       Timers
+
+    </a>
+</li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- ===================================== -->
+<!-- MAIN -->
+<!-- ===================================== -->
+
+<main>
+
+    <!-- ===================================== -->
+    <!-- HELLO SONGS -->
+    <!-- ===================================== -->
+
+    <section id="hello" class="secao ativa">
+
+        <h1 class="titulo-secao">
+            Hello Songs
+        </h1>
+
+        <div class="video-grid" id="helloGrid">
+
+            <div class="video-card"
+                 onclick="abrirVideo('T-wvRTDieGQ')">
+
+                <img src="https://img.youtube.com/vi/T-wvRTDieGQ/hqdefault.jpg">
+
+            </div>
+
+            <div class="video-card"
+                 onclick="abrirVideo('tVlcKp3bWH8')">
+
+                <img src="https://img.youtube.com/vi/tVlcKp3bWH8/hqdefault.jpg">
+
+            </div>
+
+            <div class="video-card"
+                 onclick="abrirVideo('fN1Cyr0ZK9M')">
+
+                <img src="https://img.youtube.com/vi/fN1Cyr0ZK9M/hqdefault.jpg">
+
+            </div>
+
+            <div class="video-card"
+                 onclick="abrirVideo('gghDRJVxFxU')">
+
+                <img src="https://img.youtube.com/vi/gghDRJVxFxU/hqdefault.jpg">
+
+            </div>
+
+        </div>
+
+        <!-- PLAYER -->
+
+        <div class="player-container hidden"
+             id="playerContainer">
+
+            <iframe
+                id="youtubePlayer"
+                allow="autoplay"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- WEATHER -->
+    <!-- ===================================== -->
+
+    <section id="weather" class="secao">
+
+        <h1 class="titulo-secao">
+            How is the Weather?
+        </h1>
+
+        <!-- VÍDEOS -->
+
+        <div class="video-grid weather-videos">
+
+            <!-- VIDEO 1 -->
+
+            <div class="video-card"
+                onclick="abrirWeatherVideo('KBL5aXSJTlE')">
+
+                <img src="https://img.youtube.com/vi/KBL5aXSJTlE/hqdefault.jpg">
+
+            </div>
+
+            <!-- VIDEO 2 -->
+
+            <div class="video-card"
+                onclick="abrirWeatherVideo('rD6FRDd9Hew')">
+
+                <img src="https://img.youtube.com/vi/rD6FRDd9Hew/hqdefault.jpg">
+
+            </div>
+
+            <!-- VIDEO 3 -->
+
+            <div class="video-card"
+                onclick="abrirWeatherVideo('D1qV5PsDoQw')">
+
+                <img src="https://img.youtube.com/vi/D1qV5PsDoQw/hqdefault.jpg">
+
+            </div>
+
+        </div>
+
+        <!-- PLAYER -->
+
+        <div class="player-container hidden"
+            id="weatherPlayerContainer">
+
+            <iframe
+                id="weatherYoutubePlayer"
+                allow="autoplay"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <!-- PAINEL -->
+
+        <div class="weather-board">
+
+            <!-- DAYS -->
+
+            <div class="board-column days-column">
+
+                <div class="board-title orange">
+                    DAYS
+                </div>
+
+                <div class="board-card day-name">SUNDAY</div>
+                <div class="board-card day-name">MONDAY</div>
+                <div class="board-card day-name">TUESDAY</div>
+                <div class="board-card day-name">WEDNESDAY</div>
+                <div class="board-card day-name">THURSDAY</div>
+                <div class="board-card day-name">FRIDAY</div>
+                <div class="board-card day-name">SATURDAY</div>
+
+            </div>
+
+            <!-- CALENDAR -->
+
+            <div class="calendar-box">
+
+                <div class="board-title blue">
+                    CALENDAR
+                </div>
+
+                <div class="calendar-content">
+
+                    <div class="calendar-month" id="calendarMonth">
+                </div>
+
+                <div class="calendar-grid" id="calendarGrid">
+                </div>
+
+                </div>
+
+                <!-- SEASONS -->
+
+                <div class="seasons-wrapper">
+
+                    <div class="seasons-titles">
+
+                        <div class="season-label summer-label">
+                            SUMMER
+                        </div>
+
+                        <div class="season-label autumn-label">
+                            FALL
+                        </div>
+
+                        <div class="season-label winter-label">
+                            WINTER
+                        </div>
+
+                        <div class="season-label spring-label">
+                            SPRING
+                        </div>
+
+                    </div>
+
+                    <div class="seasons-images">
+
+                        <div class="season-image-card summer-card">
+
+                            <img src="images/summer.png">
+
+                        </div>
+
+                        <div class="season-image-card autumn-card">
+
+                            <img src="images/fall.png">
+
+                        </div>
+
+                        <div class="season-image-card winter-card">
+
+                            <img src="images/winter.png">
+
+                        </div>
+
+                        <div class="season-image-card spring-card">
+
+                            <img src="images/spring.png">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- WEATHER -->
+
+            <div class="board-column">
+
+                <div class="board-title green">
+                    WEATHER
+                </div>
+
+                <div class="board-card weather-card sunny">
+
+                    <span class="weather-icon">☀️</span>
+
+                    <span>SUNNY</span>
+
+                </div>
+
+                <div class="board-card weather-card cloudy">
+
+                    <span class="weather-icon">☁️</span>
+
+                    <span>CLOUDY</span>
+
+                </div>
+
+                <div class="board-card weather-card rainy">
+
+                    <span class="weather-icon">🌧️</span>
+
+                    <span>RAINY</span>
+
+                </div>
+
+                <div class="board-card weather-card partly">
+
+                    <span class="weather-icon">⛅</span>
+
+                    <span>PARTLY CLOUDY</span>
+
+                </div>
+
+                <div class="board-title red temp-title">
+                    TEMPERATURE
+                </div>
+
+                <div class="board-card temp-card hot">
+
+                    <span class="weather-icon">🔥</span>
+
+                    <span>HOT</span>
+
+                </div>
+
+                <div class="board-card temp-card warm">
+
+                    <span class="weather-icon">🌤️</span>
+
+                    <span>WARM</span>
+
+                </div>
+
+                <div class="board-card temp-card cool">
+
+                    <span class="weather-icon">🍃</span>
+
+                    <span>COOL</span>
+
+                </div>
+
+                <div class="board-card temp-card cold">
+
+                    <span class="weather-icon">❄️</span>
+
+                    <span>COLD</span>
+
+                </div>
+
+            </div>
+
+            <!-- MONTHS -->
+
+            <div class="board-column months-column">
+
+                <div class="board-title purple">
+                    MONTHS
+                </div>
+
+                <div class="board-card month-name">JANUARY</div>
+                <div class="board-card month-name">FEBRUARY</div>
+                <div class="board-card month-name">MARCH</div>
+                <div class="board-card month-name">APRIL</div>
+                <div class="board-card month-name">MAY</div>
+                <div class="board-card month-name">JUNE</div>
+                <div class="board-card month-name">JULY</div>
+                <div class="board-card month-name">AUGUST</div>
+                <div class="board-card month-name">SEPTEMBER</div>
+                <div class="board-card month-name">OCTOBER</div>
+                <div class="board-card month-name">NOVEMBER</div>
+                <div class="board-card month-name">DECEMBER</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- SPIN THE WHEEL -->
+    <!-- ===================================== -->
+
+    <section id="wheel" class="secao">
+    
+        <h1 class="titulo-secao">
+    Spin The Wheel
+</h1>
+
+<div class="wheel-layout">
+
+    <!-- ROLETA -->
+
+    <div class="wheel-area">
+
+        <canvas
+            id="wheelCanvas"
+            width="500"
+            height="500">
+        </canvas>
+
+        <button 
+            class="spin-button"
+            onclick="spinWheel()">
+
+            SPIN
+
+        </button>
+
+    </div>
+
+    <!-- CONTROLES -->
+
+    <div class="wheel-controls">
+
+        <!-- TURMAS -->
+
+        <div class="wheel-panel">
+
+            <h2>Classroom</h2>
+
+            <div class="classroom-create">
+
+                <input
+                    type="text"
+                    id="classroomInput"
+                    placeholder="New classroom">
+
+                <button onclick="createClassroom()">
+
+                    Create
+
+                </button>
+
+            </div>
+
+            <select id="classroomSelect"
+                    onchange="loadClassroom()">
+
+            </select>
+
+            <div class="wheel-actions">
+
+            <button onclick="deleteClassroom()">
+                Delete Classroom
+            </button>
+
+</div>
+
+
+
+
+        </div>
+
+        <!-- ALUNOS -->
+
+        <div class="wheel-panel">
+
+    <h2>Wheel Students</h2>
+
+    <!-- ADICIONAR TODOS -->
+
+    <button onclick="addAllToWheel()">
+
+        + Add All
+
+    </button>
+
+    <!-- ALUNOS DISPONÍVEIS -->
+
+    <div id="availableStudents"
+     class="students-box">
+
+    </div>
+
+    <hr>
+
+    <h3>In Wheel</h3>
+
+    <div id="wheelStudentsList"
+     class="students-box">
+
+    </div>
+
+</div>
+
+<div class="wheel-panel">
+
+    <details>
+
+        <summary>
+
+            ⚙️ Manage Classroom
+
+        </summary>
+
+        
+
+        <div class="student-create">
+
+            <input
+                type="text"
+                id="studentInput"
+                placeholder="Student name">
+
+            <button onclick="addStudent()">
+
+                Add Student
+
+            </button>
+
+        </div>
+
+    </details>
+
+</div>
+
+        <!-- AÇÕES -->
+
+        <div class="wheel-panel">
+
+            <h2>Wheel</h2>
+
+            <button onclick="resetWheel()">
+
+                Reset Wheel
+            </button>
+
+            <button onclick="exportData()">
+
+                Export JSON
+            </button>
+
+            <label class="import-button">
+
+                Import JSON
+
+                <input type="file"
+                       id="importInput"
+                       hidden>
+            </label>
+
+        </div>
+
+    </div>
+
+</div>
+
+    
+    </section>
+
+   <section id="games" class="secao">
+
+    <h1 class="titulo-secao">
+        Games
+    </h1>
+
+    <!-- GRID -->
+
+    <div class="video-grid games-grid"
+         id="gamesGrid">
+
+        <!-- 1 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('fNLgG9BYWZo')">
+
+            <div class="game-number">1</div>
+
+            <img src="https://img.youtube.com/vi/fNLgG9BYWZo/hqdefault.jpg">
+
+        </div>
+
+        <!-- 2 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('N_Lg4bC8h04')">
+
+            <div class="game-number">2</div>
+
+            <img src="https://img.youtube.com/vi/N_Lg4bC8h04/hqdefault.jpg">
+
+        </div>
+
+        <!-- 3 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('P0KjRThyGcM')">
+
+            <div class="game-number">3</div>
+
+            <img src="https://img.youtube.com/vi/P0KjRThyGcM/hqdefault.jpg">
+
+        </div>
+
+        <!-- 4 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('2a6qy7Simzs')">
+
+            <div class="game-number">4</div>
+
+            <img src="https://img.youtube.com/vi/2a6qy7Simzs/hqdefault.jpg">
+
+        </div>
+
+        <!-- 5 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('vXuJKUBRQpw')">
+
+            <div class="game-number">5</div>
+
+            <img src="https://img.youtube.com/vi/vXuJKUBRQpw/hqdefault.jpg">
+
+        </div>
+
+        <!-- 6 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('RNUZBHlRH4Y')">
+
+            <div class="game-number">6</div>
+
+            <img src="https://img.youtube.com/vi/RNUZBHlRH4Y/hqdefault.jpg">
+
+        </div>
+
+        <!-- 7 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('WX8HmogNyCY')">
+
+            <div class="game-number">7</div>
+
+            <img src="https://img.youtube.com/vi/WX8HmogNyCY/hqdefault.jpg">
+
+        </div>
+
+        <!-- 8 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('VloEiK4Ihj8')">
+
+            <div class="game-number">8</div>
+
+            <img src="https://img.youtube.com/vi/VloEiK4Ihj8/hqdefault.jpg">
+
+        </div>
+
+        <!-- 9 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('dUXk8Nc5qQ8')">
+
+            <div class="game-number">9</div>
+
+            <img src="https://img.youtube.com/vi/dUXk8Nc5qQ8/hqdefault.jpg">
+
+        </div>
+
+        <!-- 10 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('t4bzu1qFwtM')">
+
+            <div class="game-number">10</div>
+
+            <img src="https://img.youtube.com/vi/t4bzu1qFwtM/hqdefault.jpg">
+
+        </div>
+
+        <!-- 11 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('nEUTY8n2iZo')">
+
+            <div class="game-number">11</div>
+
+            <img src="https://img.youtube.com/vi/nEUTY8n2iZo/hqdefault.jpg">
+
+        </div>
+
+        <!-- 12 -->
+
+        <div class="video-card"
+             onclick="window.open('https://www.youtube.com/watch?v=wbNAiN8FTfc')">
+
+            <div class="game-number">12</div>
+
+            <img src="https://img.youtube.com/vi/wbNAiN8FTfc/hqdefault.jpg">
+
+        </div>
+
+        <!-- 13 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('zxIpA5nF_LY')">
+
+            <div class="game-number">13</div>
+
+            <img src="https://img.youtube.com/vi/zxIpA5nF_LY/hqdefault.jpg">
+
+        </div>
+
+        <!-- 14 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('02H502iplUU')">
+
+            <div class="game-number">14</div>
+
+            <img src="https://img.youtube.com/vi/02H502iplUU/hqdefault.jpg">
+
+        </div>
+
+        <!-- 15 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('S2eRNzsAZg4')">
+
+            <div class="game-number">15</div>
+
+            <img src="https://img.youtube.com/vi/S2eRNzsAZg4/hqdefault.jpg">
+
+        </div>
+
+        <!-- 16 -->
+
+        <div class="video-card"
+             onclick="window.open('https://www.youtube.com/watch?v=2UcZWXvgMZE')">
+
+            <div class="game-number">16</div>
+
+            <img src="https://img.youtube.com/vi/2UcZWXvgMZE/hqdefault.jpg">
+
+        </div>
+
+        <!-- 17 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('l4WNrvVjiTw')">
+
+            <div class="game-number">17</div>
+
+            <img src="https://img.youtube.com/vi/l4WNrvVjiTw/hqdefault.jpg">
+
+        </div>
+
+        <!-- 18 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('A1vdKfXlB_g')">
+
+            <div class="game-number">18</div>
+
+            <img src="https://img.youtube.com/vi/A1vdKfXlB_g/hqdefault.jpg">
+
+        </div>
+
+        <!-- 19 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('wF3ECvvHEBg')">
+
+            <div class="game-number">19</div>
+
+            <img src="https://img.youtube.com/vi/wF3ECvvHEBg/hqdefault.jpg">
+
+        </div>
+
+        <!-- 20 -->
+
+        <div class="video-card"
+             onclick="abrirGameVideo('UuYyvYy55FI')">
+
+            <div class="game-number">20</div>
+
+            <img src="https://img.youtube.com/vi/UuYyvYy55FI/hqdefault.jpg">
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER -->
+
+    <div class="player-container hidden"
+         id="gamesPlayerContainer">
+
+        <iframe
+            id="gamesYoutubePlayer"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+    <!-- ===================================== -->
+    <!-- CIRCLE TIME -->
+    <!-- ===================================== -->
+
+    <section id="circle" class="secao">
+
+    <h1 class="titulo-secao">
+        Circle Time
+    </h1>
+
+    <!-- CARD DO VÍDEO -->
+
+    <div class="video-grid one-video-grid">
+
+        <div class="video-card number-card"
+             onclick="abrirCircleVideo('ALcL3MuU4xQ')">
+
+
+
+            <img src="https://img.youtube.com/vi/ALcL3MuU4xQ/hqdefault.jpg">
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER -->
+
+    <div class="player-container hidden"
+         id="circlePlayerContainer">
+
+        <iframe
+            id="circleYoutubePlayer"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+    <!-- ===================================== -->
+    <!-- CLEAN UP -->
+    <!-- ===================================== -->
+
+    <section id="cleanup" class="secao">
+
+    <h1 class="titulo-secao">
+        Clean Up Time
+    </h1>
+
+    <!-- CARD DO VÍDEO -->
+
+    <div class="video-grid cleanup-video-grid">
+
+        <div class="video-card number-card"
+             onclick="abrirCleanupVideo('SFE0mMWbA-Y')">
+
+           
+            <img src="https://img.youtube.com/vi/SFE0mMWbA-Y/hqdefault.jpg">
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER -->
+
+    <div class="player-container hidden"
+         id="cleanupPlayerContainer">
+
+        <iframe
+            id="cleanupYoutubePlayer"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+    <!-- ===================================== -->
+    <!-- BYE -->
+    <!-- ===================================== -->
+
+   <section id="bye" class="secao">
+
+    <h1 class="titulo-secao">
+        Bye Bye Songs
+    </h1>
+
+    <!-- GRID -->
+
+    <div class="bye-grid">
+
+        <!-- VIDEO 1 -->
+
+        <div class="video-card bye-card"
+             onclick="window.open('https://www.youtube.com/watch?v=fTZp053gGt4')">
+
+            <div class="bye-label">
+                1
+            </div>
+
+            <img src="https://img.youtube.com/vi/fTZp053gGt4/hqdefault.jpg">
+
+        </div>
+
+        <!-- VIDEO 2 -->
+
+        <div class="video-card bye-card"
+             onclick="abrirByeVideo('PraN5ZoSjiY')">
+
+            <div class="bye-label">
+                2
+            </div>
+
+            <img src="https://img.youtube.com/vi/PraN5ZoSjiY/hqdefault.jpg">
+
+        </div>
+
+        <!-- VIDEO 3 -->
+
+        <div class="video-card bye-card"
+             onclick="abrirByeVideo('UQfvAlmr5g0')">
+
+            <div class="bye-label">
+                3
+            </div>
+
+            <img src="https://img.youtube.com/vi/UQfvAlmr5g0/hqdefault.jpg">
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER -->
+
+    <div class="player-container hidden"
+         id="byePlayerContainer">
+
+        <iframe
+            id="byeYoutubePlayer"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+<section id="timers" class="secao">
+
+    <h1 class="titulo-secao">
+        Timers
+    </h1>
+
+    <!-- GRID -->
+
+    <div class="timers-grid">
+
+        <!-- TIMER 1 -->
+
+        <div class="video-card timer-card"
+             onclick="abrirTimerVideo('f1wxBXqPtCM')">
+
+            <div class="timer-label">
+                2 MINUTES
+            </div>
+
+            <img src="https://img.youtube.com/vi/f1wxBXqPtCM/hqdefault.jpg">
+
+        </div>
+
+        <!-- TIMER 2 -->
+
+        <div class="video-card timer-card"
+             onclick="abrirTimerVideo('eDfeoAP4T08')">
+
+            <div class="timer-label">
+                3 MINUTES
+            </div>
+
+            <img src="https://img.youtube.com/vi/eDfeoAP4T08/hqdefault.jpg">
+
+        </div>
+
+        <!-- TIMER 3 -->
+
+        <div class="video-card timer-card"
+             onclick="abrirTimerVideo('0atFyVpAxqg')">
+
+            <div class="timer-label">
+                5 MINUTES
+            </div>
+
+            <img src="https://img.youtube.com/vi/0atFyVpAxqg/hqdefault.jpg">
+
+        </div>
+
+        <!-- TIMER 4 -->
+
+        <div class="video-card timer-card"
+             onclick="abrirTimerVideo('KClQk17F4pY')">
+
+            <div class="timer-label">
+                10 MINUTES
+            </div>
+
+            <img src="https://img.youtube.com/vi/KClQk17F4pY/hqdefault.jpg">
+
+        </div>
+
+    </div>
+
+    <!-- PLAYER -->
+
+    <div class="player-container hidden"
+         id="timerPlayerContainer">
+
+        <iframe
+            id="timerYoutubePlayer"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- BOTÃO -->
+
+<button class="next-button">
+
+    →
+
+</button>
+
+<!-- SUNNY EFFECT -->
+
+<div class="sun-overlay" id="sunOverlay">
+
+    <div class="sun"></div>
+
+</div>
+
+<!-- RAIN EFFECT -->
+
+<div class="rain-overlay" id="rainOverlay"></div>
+
+<!-- CLOUDY EFFECT -->
+
+<div class="cloud-overlay" id="cloudOverlay">
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+    <div class="cloud cloud5"></div>
+    <div class="cloud cloud6"></div>
+    <div class="cloud cloud7"></div>
+</div>
+
+<!-- PARTLY CLOUDY EFFECT -->
+
+<div class="partly-overlay" id="partlyOverlay">
+
+    <!-- SOL -->
+
+    <div class="partly-sun"></div>
+
+    <!-- NUVENS -->
+
+    <div class="part-cloud part-cloud1"></div>
+    <div class="part-cloud part-cloud2"></div>
+    <div class="part-cloud part-cloud3"></div>
+
+</div>
+
+<div id="winnerPopup" class="winner-popup hidden">
+
+    <div class="winner-card">
+
+        <h2>🎉 HELPER OF THE DAY 🎉</h2>
+
+        <div id="winnerName"
+             class="winner-name">
+
+            STUDENT
+
+        </div>
+
+        <div class="winner-buttons">
+
+            <button onclick="removeWinner()">
+                Remove from Wheel
+            </button>
+
+            <button onclick="closeWinnerPopup()">
+                Keep
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+
+</html>
+
