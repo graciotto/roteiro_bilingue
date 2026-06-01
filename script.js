@@ -195,46 +195,45 @@ cloudyCard.addEventListener('mouseleave', () => {
 
 const body = document.body;
 
+const ALL_BG_CLASSES = [
+    'bg-sunny', 'bg-cloudy', 'bg-rainy', 'bg-partly',
+    'bg-hot', 'bg-warm', 'bg-cool', 'bg-cold'
+];
+
+function setBodyBg(cls) {
+    body.style.background = '';
+    ALL_BG_CLASSES.forEach(c => body.classList.remove(c));
+    if (cls) body.classList.add(cls);
+}
+
 /* SUNNY */
 
 sunnyCard.addEventListener('mouseenter', () => {
-
-    body.style.background =
-        'linear-gradient(to bottom, #6ec6ff, #b3e5fc)';
+    setBodyBg('bg-sunny');
 });
 
 sunnyCard.addEventListener('mouseleave', () => {
-
-    body.style.background =
-    'linear-gradient(to bottom, #d8ece8, #cfe0df)';
+    setBodyBg(null);
 });
 
 /* CLOUDY */
 
 cloudyCard.addEventListener('mouseenter', () => {
-
-    body.style.background =
-        'linear-gradient(to bottom, #b0bec5, #cfd8dc)';
+    setBodyBg('bg-cloudy');
 });
 
 cloudyCard.addEventListener('mouseleave', () => {
-
-    body.style.background =
-    'linear-gradient(to bottom, #d8ece8, #cfe0df)';
+    setBodyBg(null);
 });
 
 /* RAINY */
 
 rainyCard.addEventListener('mouseenter', () => {
-
-    body.style.background =
-        'linear-gradient(to bottom, #5c6b73, #90a4ae)';
+    setBodyBg('bg-rainy');
 });
 
 rainyCard.addEventListener('mouseleave', () => {
-
-    body.style.background =
-    'linear-gradient(to bottom, #d8ece8, #cfe0df)';
+    setBodyBg(null);
 });
 
 /* =========================
@@ -250,16 +249,338 @@ partlyCard.addEventListener('mouseenter', () => {
 
     partlyOverlay.classList.add('active');
 
-    body.style.background =
-        'linear-gradient(to bottom, #7fd3ff, #c4ecff)';
+    setBodyBg('bg-partly');
 });
 
 partlyCard.addEventListener('mouseleave', () => {
 
     partlyOverlay.classList.remove('active');
 
-    body.style.background =
-        'linear-gradient(to bottom, #d8ece8, #cfe0df)';
+    setBodyBg(null);
+});
+
+/* =========================
+   TEMPERATURE EFFECTS
+========================= */
+
+const fireOverlay  = document.getElementById('fireOverlay');
+const warmOverlay  = document.getElementById('warmOverlay');
+const coolOverlay  = document.getElementById('coolOverlay');
+const coldOverlay  = document.getElementById('coldOverlay');
+
+/* CHAMAS CSS (HOT) */
+
+const flamesContainer =
+    document.getElementById('flamesContainer');
+
+/* Labareda: wide base, tip rises and fades */
+
+for (let i = 0; i < 24; i++) {
+
+    const flame = document.createElement('div');
+    flame.classList.add('css-flame');
+
+    flame.style.left =
+        (i * 4.4 + Math.random() * 3 - 1.5) + 'vw';
+
+    const w = 70 + Math.random() * 90;
+    flame.style.width  = w + 'px';
+    flame.style.height = (120 + Math.random() * 160) + 'px';
+
+    flame.style.animationDuration =
+        (1.2 + Math.random() * 1.6) + 's';
+    flame.style.animationDelay =
+        (-Math.random() * 2.5) + 's';
+
+    flamesContainer.appendChild(flame);
+}
+
+/* WARM ORBS */
+
+for (let i = 0; i < 18; i++) {
+
+    const orb = document.createElement('div');
+    orb.classList.add('warm-orb');
+
+    orb.style.left = (5 + Math.random() * 90) + 'vw';
+    orb.style.top  = (5 + Math.random() * 90) + 'vh';
+
+    const size = 40 + Math.random() * 120;
+    orb.style.width  = size + 'px';
+    orb.style.height = size + 'px';
+
+    orb.style.animationDuration =
+        (4 + Math.random() * 6) + 's';
+    orb.style.animationDelay =
+        (-Math.random() * 6) + 's';
+
+    warmOverlay.appendChild(orb);
+}
+
+/* FOLHAS (COOL) */
+
+const leafEmojis = ['🍃', '🌿', '🍀', '🍂'];
+
+for (let i = 0; i < 28; i++) {
+
+    const leaf = document.createElement('div');
+    leaf.classList.add('leaf');
+
+    leaf.innerHTML =
+        leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
+
+    leaf.style.top      = (5 + Math.random() * 88) + 'vh';
+    leaf.style.left     = '110vw';
+    leaf.style.fontSize = (18 + Math.random() * 28) + 'px';
+
+    leaf.style.animationDuration =
+        (6 + Math.random() * 8) + 's';
+    leaf.style.animationDelay =
+        (-Math.random() * 8) + 's';
+
+    leaf.style.setProperty(
+        '--bob1',
+        (Math.random() * 120 - 60) + 'px'
+    );
+    leaf.style.setProperty(
+        '--bob2',
+        (Math.random() * 150 - 75) + 'px'
+    );
+    leaf.style.setProperty(
+        '--rot-s',
+        Math.floor(Math.random() * 360) + 'deg'
+    );
+
+    coolOverlay.appendChild(leaf);
+}
+
+/* SNOWFLAKES (COLD) */
+
+const snowChars = ['❄', '❅', '❆', '·', '•'];
+
+for (let i = 0; i < 70; i++) {
+
+    const flake = document.createElement('div');
+    flake.classList.add('snowflake');
+
+    flake.innerHTML =
+        snowChars[Math.floor(Math.random() * snowChars.length)];
+
+    flake.style.left    = Math.random() * 100 + 'vw';
+    flake.style.top     = '-30px';
+    flake.style.fontSize =
+        (12 + Math.random() * 24) + 'px';
+
+    flake.style.animationDuration =
+        (3 + Math.random() * 5) + 's';
+    flake.style.animationDelay =
+        (-Math.random() * 5) + 's';
+
+    flake.style.setProperty(
+        '--drift',
+        (Math.random() - 0.5) * 150 + 'px'
+    );
+
+    coldOverlay.appendChild(flake);
+}
+
+/* =========================
+   AUDIO — HOT
+========================= */
+
+function playHotSound() {
+
+    try {
+
+        const ctx =
+            new (window.AudioContext ||
+                 window.webkitAudioContext)();
+
+        /* SIBILÂNCIA ASCENDENTE */
+
+        const osc  = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(200, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(
+            900, ctx.currentTime + 0.35
+        );
+
+        gain.gain.setValueAtTime(0.35, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(
+            0.001, ctx.currentTime + 0.5
+        );
+
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.5);
+
+        /* ACORDE CÔMICO */
+
+        setTimeout(() => {
+
+            const ctx2 = new AudioContext();
+
+            [330, 415, 523].forEach(freq => {
+
+                const o = ctx2.createOscillator();
+                const g = ctx2.createGain();
+
+                o.connect(g);
+                g.connect(ctx2.destination);
+
+                o.type = 'triangle';
+                o.frequency.value = freq;
+
+                g.gain.setValueAtTime(0.18, ctx2.currentTime);
+                g.gain.exponentialRampToValueAtTime(
+                    0.001, ctx2.currentTime + 0.9
+                );
+
+                o.start(ctx2.currentTime);
+                o.stop(ctx2.currentTime + 0.9);
+            });
+
+        }, 400);
+
+    } catch(e) {}
+}
+
+/* =========================
+   AUDIO — COLD
+========================= */
+
+function playColdSound() {
+
+    try {
+
+        const ctx =
+            new (window.AudioContext ||
+                 window.webkitAudioContext)();
+
+        const osc      = ctx.createOscillator();
+        const lfo      = ctx.createOscillator();
+        const lfoGain  = ctx.createGain();
+        const mainGain = ctx.createGain();
+
+        /* TREMULAÇÃO (BRR) */
+
+        lfo.type            = 'sine';
+        lfo.frequency.value = 14;
+        lfoGain.gain.value  = 90;
+
+        lfo.connect(lfoGain);
+        lfoGain.connect(osc.frequency);
+
+        /* TOM DESCENDENTE */
+
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(300, ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(
+            160, ctx.currentTime + 2
+        );
+
+        osc.connect(mainGain);
+        mainGain.connect(ctx.destination);
+
+        mainGain.gain.setValueAtTime(0.22, ctx.currentTime);
+        mainGain.gain.exponentialRampToValueAtTime(
+            0.001, ctx.currentTime + 2
+        );
+
+        lfo.start(ctx.currentTime);
+        osc.start(ctx.currentTime);
+        lfo.stop(ctx.currentTime + 2);
+        osc.stop(ctx.currentTime + 2);
+
+    } catch(e) {}
+}
+
+/* =========================
+   HOT CARD
+========================= */
+
+const hotCard = document.querySelector('.hot');
+
+hotCard.addEventListener('mouseenter', () => {
+
+    fireOverlay.classList.add('active');
+
+    setBodyBg('bg-hot');
+
+    playHotSound();
+});
+
+hotCard.addEventListener('mouseleave', () => {
+
+    fireOverlay.classList.remove('active');
+
+    setBodyBg(null);
+});
+
+/* =========================
+   WARM CARD
+========================= */
+
+const warmCard = document.querySelector('.warm');
+
+warmCard.addEventListener('mouseenter', () => {
+
+    warmOverlay.classList.add('active');
+
+    setBodyBg('bg-warm');
+});
+
+warmCard.addEventListener('mouseleave', () => {
+
+    warmOverlay.classList.remove('active');
+
+    setBodyBg(null);
+});
+
+/* =========================
+   COOL CARD
+========================= */
+
+const coolCard = document.querySelector('.cool');
+
+coolCard.addEventListener('mouseenter', () => {
+
+    coolOverlay.classList.add('active');
+
+    setBodyBg('bg-cool');
+});
+
+coolCard.addEventListener('mouseleave', () => {
+
+    coolOverlay.classList.remove('active');
+
+    setBodyBg(null);
+});
+
+/* =========================
+   COLD CARD
+========================= */
+
+const coldCard = document.querySelector('.cold');
+
+coldCard.addEventListener('mouseenter', () => {
+
+    coldOverlay.classList.add('active');
+
+    setBodyBg('bg-cold');
+
+    playColdSound();
+});
+
+coldCard.addEventListener('mouseleave', () => {
+
+    coldOverlay.classList.remove('active');
+
+    setBodyBg(null);
 });
 
 /* =========================
@@ -280,18 +601,10 @@ const currentWeekDay = now.getDay();
 
 const months = [
 
-    "JANUARY",
-    "FEBRUARY",
-    "MARCH",
-    "APRIL",
-    "MAY",
-    "JUNE",
-    "JULY",
-    "AUGUST",
-    "SEPTEMBER",
-    "OCTOBER",
-    "NOVEMBER",
-    "DECEMBER"
+    "JANUARY", "FEBRUARY", "MARCH",
+    "APRIL", "MAY", "JUNE",
+    "JULY", "AUGUST", "SEPTEMBER",
+    "OCTOBER", "NOVEMBER", "DECEMBER"
 ];
 
 const calendarMonth =
@@ -299,6 +612,29 @@ const calendarMonth =
 
 calendarMonth.innerHTML =
     `${months[currentMonth]} ${currentYear}`;
+
+/* ESTAÇÃO POR DATA EXATA (Hemisfério Sul) */
+
+function getSeasonClass(day, month) {
+
+    /* Verão: 21/Dez – 19/Mar */
+    if (month === 11 && day >= 21) return 'season-summer';
+    if (month === 0 || month === 1)  return 'season-summer';
+    if (month === 2 && day <= 19)    return 'season-summer';
+
+    /* Outono: 20/Mar – 20/Jun */
+    if (month === 2 && day >= 20)    return 'season-autumn';
+    if (month === 3 || month === 4)  return 'season-autumn';
+    if (month === 5 && day <= 20)    return 'season-autumn';
+
+    /* Inverno: 21/Jun – 22/Set */
+    if (month === 5 && day >= 21)    return 'season-winter';
+    if (month === 6 || month === 7)  return 'season-winter';
+    if (month === 8 && day <= 22)    return 'season-winter';
+
+    /* Primavera: 23/Set – 20/Dez */
+    return 'season-spring';
+}
 
 /* CALENDÁRIO */
 
@@ -308,45 +644,40 @@ const calendarGrid =
 const daysInMonth =
     new Date(currentYear, currentMonth + 1, 0).getDate();
 
+const firstWeekDay =
+    new Date(currentYear, currentMonth, 1).getDay();
+
+/* CABEÇALHO DE DIAS DA SEMANA */
+
+const dayNames =
+    ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+dayNames.forEach(name => {
+
+    const header = document.createElement('div');
+    header.textContent = name;
+    header.classList.add('calendar-day-header');
+    calendarGrid.appendChild(header);
+});
+
+/* CÉLULAS VAZIAS PARA OFFSET */
+
+for (let i = 0; i < firstWeekDay; i++) {
+
+    const empty = document.createElement('div');
+    empty.classList.add('calendar-day-empty');
+    calendarGrid.appendChild(empty);
+}
+
+/* DIAS DO MÊS */
+
 for (let i = 1; i <= daysInMonth; i++) {
 
     const day = document.createElement('div');
 
     day.innerText = i;
 
-    /* ESTAÇÕES */
-
-    if (
-        currentMonth === 11 ||
-        currentMonth === 0 ||
-        currentMonth === 1
-    ) {
-
-        day.classList.add('season-summer');
-    }
-
-    else if (
-        currentMonth >= 2 &&
-        currentMonth <= 4
-    ) {
-
-        day.classList.add('season-autumn');
-    }
-
-    else if (
-        currentMonth >= 5 &&
-        currentMonth <= 7
-    ) {
-
-        day.classList.add('season-winter');
-    }
-
-    else {
-
-        day.classList.add('season-spring');
-    }
-
-    /* DIA ATUAL */
+    day.classList.add(getSeasonClass(i, currentMonth));
 
     if (i === currentDay) {
 
@@ -381,35 +712,16 @@ function activateSeason(cardClass) {
         .classList.add('active-season');
 }
 
-if (
-    currentMonth === 11 ||
-    currentMonth === 0 ||
-    currentMonth === 1
-) {
+const seasonCardMap = {
+    'season-summer': 'summer-card',
+    'season-autumn': 'autumn-card',
+    'season-winter': 'winter-card',
+    'season-spring': 'spring-card'
+};
 
-    activateSeason('summer-card');
-}
-
-else if (
-    currentMonth >= 2 &&
-    currentMonth <= 4
-) {
-
-    activateSeason('autumn-card');
-}
-
-else if (
-    currentMonth >= 5 &&
-    currentMonth <= 7
-) {
-
-    activateSeason('winter-card');
-}
-
-else {
-
-    activateSeason('spring-card');
-}
+activateSeason(
+    seasonCardMap[getSeasonClass(currentDay, currentMonth)]
+);
 
 /* =========================
    WEATHER VIDEOS

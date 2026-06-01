@@ -446,6 +446,38 @@ main {
 }
 
 /* =========================
+   CABEÇALHO DE DIAS
+========================= */
+
+.calendar-day-header {
+
+    padding: 6px 4px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #444 !important;
+
+    background: rgba(44, 62, 80, 0.12) !important;
+
+    border-radius: 6px;
+}
+
+/* CÉLULA VAZIA (OFFSET) */
+
+.calendar-day-empty {
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    border: none !important;
+}
+
+/* =========================
    DIA ATUAL
 ========================= */
 
@@ -2632,9 +2664,8 @@ body {
     background:
         linear-gradient(
             to bottom,
-            #3e838c,
-            #8ebdb6,
-            #ece1c3
+            #6ec6ff,
+            #b3e5fc
         );
 }
 
@@ -2645,9 +2676,8 @@ body {
     background:
         linear-gradient(
             to bottom,
-            #195e63,
-            #3e838c,
-            #8ebdb6
+            #b0bec5,
+            #cfd8dc
         );
 }
 
@@ -2658,9 +2688,8 @@ body {
     background:
         linear-gradient(
             to bottom,
-            #063940,
-            #195e63,
-            #3e838c
+            #5c6b73,
+            #90a4ae
         );
 }
 
@@ -2671,9 +2700,637 @@ body {
     background:
         linear-gradient(
             to bottom,
-            #195e63,
-            #3e838c,
-            #ece1c3
+            #7fd3ff,
+            #c4ecff
         );
+}
+
+/* HOT */
+
+.bg-hot {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5c0000,
+            #b22222,
+            #ff4500
+        );
+}
+
+/* WARM */
+
+.bg-warm {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #7b3a00,
+            #c87010,
+            #f4a234
+        );
+}
+
+/* COOL */
+
+.bg-cool {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #006450,
+            #00897b,
+            #4db6ac
+        );
+}
+
+/* COLD */
+
+.bg-cold {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #0a1533,
+            #1a237e,
+            #3949ab
+        );
+}
+
+/* =========================
+   FIRE OVERLAY (HOT)
+========================= */
+
+.fire-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.5s;
+
+    z-index: 7;
+
+    backdrop-filter: blur(2px) brightness(0.85);
+
+    background: rgba(255, 30, 0, 0.07);
+
+    /* Glow de fogo nas 4 bordas */
+
+    box-shadow:
+        inset 0 -320px 260px rgba(255, 50, 0, 0.55),
+        inset 0  320px 260px rgba(200, 30, 0, 0.12),
+        inset -220px 0 220px rgba(255, 60, 0, 0.28),
+        inset  220px 0 220px rgba(255, 60, 0, 0.28);
+}
+
+.fire-overlay.active {
+
+    opacity: 1;
+}
+
+/* EMOJI DO FOGO */
+
+.fire-emoji {
+
+    position: absolute;
+
+    top: 40%;
+
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    font-size: 160px;
+
+    filter:
+        drop-shadow(0 0 40px #ff4500)
+        drop-shadow(0 0 80px #ff8c00);
+
+    animation: fireFloat 2s ease-in-out infinite;
+
+    z-index: 2;
+}
+
+@keyframes fireFloat {
+
+    0%, 100% {
+        transform:
+            translateX(-50%)
+            translateY(-50%)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-60%)
+            scale(1.09);
+    }
+}
+
+/* BASE LARGA UNIFICADA */
+
+.fire-base-glow {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: -6%;
+
+    right: -6%;
+
+    height: 110px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 10, 0, 0.98) 0%,
+            rgba(255, 65, 0, 0.82) 35%,
+            rgba(255, 115, 0, 0.52) 62%,
+            rgba(255, 170, 0, 0.22) 80%,
+            transparent 100%
+        );
+
+    filter: blur(8px);
+
+    animation:
+        baseGlow 0.18s ease-in-out infinite alternate;
+}
+
+@keyframes baseGlow {
+
+    0%  { transform: scaleX(1.02) scaleY(0.97); opacity: 0.88; }
+    100% { transform: scaleX(0.98) scaleY(1.05); opacity: 1; }
+}
+
+/* CONTAINER DAS LABAREDAS */
+
+.flames-container {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 0;
+}
+
+/* LABAREDA PONTIAGUDA */
+
+.css-flame {
+
+    position: absolute;
+
+    bottom: 0;
+
+    transform-origin: bottom center;
+
+    /* Forma pontuda: larga na base, estreita no topo */
+
+    clip-path: polygon(
+        50% 0%,
+        68% 32%,
+        82% 58%,
+        100% 100%,
+        0% 100%,
+        18% 58%,
+        32% 32%
+    );
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 15, 0, 1.0)  0%,
+            rgba(255, 75, 0, 0.92) 22%,
+            rgba(255, 130, 0, 0.75) 45%,
+            rgba(255, 195, 0, 0.45) 68%,
+            rgba(255, 240, 80, 0.15) 85%,
+            transparent 100%
+        );
+
+    animation: flameTongue ease-in-out infinite;
+}
+
+/* NÚCLEO LUMINOSO INTERNO */
+
+.css-flame::after {
+
+    content: '';
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 25%;
+
+    right: 25%;
+
+    height: 55%;
+
+    clip-path: polygon(
+        50% 0%,
+        80% 60%,
+        100% 100%,
+        0% 100%,
+        20% 60%
+    );
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 230, 60, 0.95) 0%,
+            rgba(255, 255, 180, 0.6) 55%,
+            transparent 100%
+        );
+}
+
+@keyframes flameTongue {
+
+    0%, 5% {
+        transform: scaleX(1) scaleY(0.85);
+        opacity: 0.1;
+    }
+
+    12% {
+        transform: scaleX(1.08) scaleY(1.05) skew(-4deg);
+        opacity: 0.95;
+    }
+
+    40% {
+        transform: scaleX(1.05) scaleY(1.55) skew(5deg);
+        opacity: 0.75;
+    }
+
+    70% {
+        transform: scaleX(0.82) scaleY(2.0) skew(-3deg);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: scaleX(0.6) scaleY(2.4) skew(2deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   WARM OVERLAY (RAIOS DE SOL)
+========================= */
+
+.warm-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.7s;
+
+    z-index: 7;
+
+    backdrop-filter: blur(2px);
+
+    background: rgba(255, 160, 30, 0.08);
+
+    box-shadow:
+        inset 0 0 240px rgba(255, 180, 0, 0.18);
+}
+
+.warm-overlay.active {
+
+    opacity: 1;
+}
+
+/* RAIOS GIRANDO */
+
+.warm-rays {
+
+    position: absolute;
+
+    width: 300vmax;
+
+    height: 300vmax;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        repeating-conic-gradient(
+            rgba(255, 210, 80, 0.13) 0deg 10deg,
+            transparent 10deg 20deg
+        );
+
+    animation: warmRaysSpin 18s linear infinite;
+}
+
+@keyframes warmRaysSpin {
+
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* SOL CENTRAL */
+
+.warm-sun {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    font-size: 150px;
+
+    filter:
+        drop-shadow(0 0 40px rgba(255, 210, 0, 0.9))
+        drop-shadow(0 0 90px rgba(255, 160, 0, 0.6));
+
+    animation: warmSunPulse 3.5s ease-in-out infinite;
+
+    z-index: 2;
+}
+
+@keyframes warmSunPulse {
+
+    0%, 100% {
+        transform:
+            translateX(-50%)
+            translateY(-50%)
+            scale(1)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-50%)
+            scale(1.1)
+            rotate(15deg);
+    }
+}
+
+/* ORBES DOURADOS */
+
+.warm-orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 240, 150, 0.85) 0%,
+            rgba(255, 190, 0, 0.45) 45%,
+            transparent 100%
+        );
+
+    filter: blur(18px);
+
+    animation: warmOrbFloat ease-in-out infinite;
+}
+
+@keyframes warmOrbFloat {
+
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: translateY(-28px) scale(1.12);
+        opacity: 0.8;
+    }
+}
+
+/* =========================
+   COOL OVERLAY (VENTO E FOLHAS)
+========================= */
+
+.cool-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.6s;
+
+    z-index: 7;
+
+    backdrop-filter: blur(1.5px);
+
+    background: rgba(80, 200, 180, 0.08);
+
+    box-shadow:
+        inset 0 0 220px rgba(60, 190, 170, 0.15);
+}
+
+.cool-overlay.active {
+
+    opacity: 1;
+}
+
+/* FOLHA VOADORA */
+
+.leaf {
+
+    position: absolute;
+
+    user-select: none;
+
+    animation: leafBlow linear infinite;
+}
+
+@keyframes leafBlow {
+
+    0% {
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(var(--rot-s));
+        opacity: 0;
+    }
+
+    8% { opacity: 1; }
+
+    25% {
+        transform:
+            translateX(-28vw)
+            translateY(var(--bob1))
+            rotate(calc(var(--rot-s) + 95deg));
+    }
+
+    50% {
+        transform:
+            translateX(-60vw)
+            translateY(var(--bob2))
+            rotate(calc(var(--rot-s) + 190deg));
+    }
+
+    75% {
+        transform:
+            translateX(-90vw)
+            translateY(var(--bob1))
+            rotate(calc(var(--rot-s) + 280deg));
+    }
+
+    92% { opacity: 0.7; }
+
+    100% {
+        transform:
+            translateX(-130vw)
+            translateY(0)
+            rotate(calc(var(--rot-s) + 360deg));
+        opacity: 0;
+    }
+}
+
+/* =========================
+   COLD OVERLAY
+========================= */
+
+.cold-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: opacity 0.5s;
+
+    z-index: 7;
+
+    backdrop-filter: blur(2px) brightness(0.82);
+
+    background: rgba(20, 50, 120, 0.15);
+
+    box-shadow:
+        inset 0 0 220px rgba(100, 160, 255, 0.22),
+        inset 0 0 80px rgba(200, 230, 255, 0.15);
+}
+
+.cold-overlay.active {
+
+    opacity: 1;
+}
+
+/* EMOJI GELADO */
+
+.cold-emoji {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    font-size: 160px;
+
+    filter:
+        drop-shadow(0 0 30px #74c0fc)
+        drop-shadow(0 0 70px #1864ab);
+
+    animation: coldShiver 0.12s ease-in-out infinite;
+
+    z-index: 2;
+}
+
+@keyframes coldShiver {
+
+    0%, 100% {
+        transform:
+            translateX(-50%)
+            translateY(-50%)
+            rotate(0deg)
+            scale(1);
+    }
+
+    25% {
+        transform:
+            translateX(-54%)
+            translateY(-50%)
+            rotate(-4deg)
+            scale(1.02);
+    }
+
+    75% {
+        transform:
+            translateX(-46%)
+            translateY(-50%)
+            rotate(4deg)
+            scale(0.98);
+    }
+}
+
+/* FLOCO DE NEVE */
+
+.snowflake {
+
+    position: absolute;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-shadow: 0 0 10px rgba(150, 200, 255, 0.9);
+
+    user-select: none;
+
+    animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+
+    0% {
+        transform:
+            translateY(-20px)
+            translateX(0)
+            rotate(0deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(var(--drift))
+            rotate(360deg);
+        opacity: 0.2;
+    }
 }
 
