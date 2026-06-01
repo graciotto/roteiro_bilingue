@@ -385,118 +385,32 @@ for (let i = 0; i < 70; i++) {
 }
 
 /* =========================
-   AUDIO — HOT
+   GERENCIADOR DE ÁUDIO
 ========================= */
 
-function playHotSound() {
+let _activeSound = null;
 
-    try {
+function stopAudio() {
 
-        const ctx =
-            new (window.AudioContext ||
-                 window.webkitAudioContext)();
+    if (_activeSound) {
 
-        /* SIBILÂNCIA ASCENDENTE */
-
-        const osc  = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(200, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(
-            900, ctx.currentTime + 0.35
-        );
-
-        gain.gain.setValueAtTime(0.35, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(
-            0.001, ctx.currentTime + 0.5
-        );
-
-        osc.start(ctx.currentTime);
-        osc.stop(ctx.currentTime + 0.5);
-
-        /* ACORDE CÔMICO */
-
-        setTimeout(() => {
-
-            const ctx2 = new AudioContext();
-
-            [330, 415, 523].forEach(freq => {
-
-                const o = ctx2.createOscillator();
-                const g = ctx2.createGain();
-
-                o.connect(g);
-                g.connect(ctx2.destination);
-
-                o.type = 'triangle';
-                o.frequency.value = freq;
-
-                g.gain.setValueAtTime(0.18, ctx2.currentTime);
-                g.gain.exponentialRampToValueAtTime(
-                    0.001, ctx2.currentTime + 0.9
-                );
-
-                o.start(ctx2.currentTime);
-                o.stop(ctx2.currentTime + 0.9);
-            });
-
-        }, 400);
-
-    } catch(e) {}
+        _activeSound.pause();
+        _activeSound.currentTime = 0;
+        _activeSound = null;
+    }
 }
 
-/* =========================
-   AUDIO — COLD
-========================= */
+function playSound(file) {
 
-function playColdSound() {
+    stopAudio();
 
-    try {
+    const audio = new Audio('sounds/' + file);
+    audio.loop   = true;
+    audio.volume = 0.6;
 
-        const ctx =
-            new (window.AudioContext ||
-                 window.webkitAudioContext)();
+    audio.play().catch(() => {});
 
-        const osc      = ctx.createOscillator();
-        const lfo      = ctx.createOscillator();
-        const lfoGain  = ctx.createGain();
-        const mainGain = ctx.createGain();
-
-        /* TREMULAÇÃO (BRR) */
-
-        lfo.type            = 'sine';
-        lfo.frequency.value = 14;
-        lfoGain.gain.value  = 90;
-
-        lfo.connect(lfoGain);
-        lfoGain.connect(osc.frequency);
-
-        /* TOM DESCENDENTE */
-
-        osc.type = 'square';
-        osc.frequency.setValueAtTime(300, ctx.currentTime);
-        osc.frequency.linearRampToValueAtTime(
-            160, ctx.currentTime + 2
-        );
-
-        osc.connect(mainGain);
-        mainGain.connect(ctx.destination);
-
-        mainGain.gain.setValueAtTime(0.22, ctx.currentTime);
-        mainGain.gain.exponentialRampToValueAtTime(
-            0.001, ctx.currentTime + 2
-        );
-
-        lfo.start(ctx.currentTime);
-        osc.start(ctx.currentTime);
-        lfo.stop(ctx.currentTime + 2);
-        osc.stop(ctx.currentTime + 2);
-
-    } catch(e) {}
+    _activeSound = audio;
 }
 
 /* =========================
@@ -508,17 +422,15 @@ const hotCard = document.querySelector('.hot');
 hotCard.addEventListener('mouseenter', () => {
 
     fireOverlay.classList.add('active');
-
     setBodyBg('bg-hot');
-
-    playHotSound();
+    playSound('fire.mp3');
 });
 
 hotCard.addEventListener('mouseleave', () => {
 
     fireOverlay.classList.remove('active');
-
     setBodyBg(null);
+    stopAudio();
 });
 
 /* =========================
@@ -530,15 +442,15 @@ const warmCard = document.querySelector('.warm');
 warmCard.addEventListener('mouseenter', () => {
 
     warmOverlay.classList.add('active');
-
     setBodyBg('bg-warm');
+    playSound('birds.mp3');
 });
 
 warmCard.addEventListener('mouseleave', () => {
 
     warmOverlay.classList.remove('active');
-
     setBodyBg(null);
+    stopAudio();
 });
 
 /* =========================
@@ -550,15 +462,15 @@ const coolCard = document.querySelector('.cool');
 coolCard.addEventListener('mouseenter', () => {
 
     coolOverlay.classList.add('active');
-
     setBodyBg('bg-cool');
+    playSound('wind.mp3');
 });
 
 coolCard.addEventListener('mouseleave', () => {
 
     coolOverlay.classList.remove('active');
-
     setBodyBg(null);
+    stopAudio();
 });
 
 /* =========================
@@ -570,17 +482,15 @@ const coldCard = document.querySelector('.cold');
 coldCard.addEventListener('mouseenter', () => {
 
     coldOverlay.classList.add('active');
-
     setBodyBg('bg-cold');
-
-    playColdSound();
+    playSound('teeth.mp3');
 });
 
 coldCard.addEventListener('mouseleave', () => {
 
     coldOverlay.classList.remove('active');
-
     setBodyBg(null);
+    stopAudio();
 });
 
 /* =========================

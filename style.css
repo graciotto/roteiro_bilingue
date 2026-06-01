@@ -310,6 +310,13 @@ main {
     align-items: start;
 }
 
+.weather-board > * {
+
+    align-self: start;
+
+    margin-top: 0;
+}
+
 /* =========================
    COLUNAS
 ========================= */
@@ -779,7 +786,7 @@ main {
 
     background: rgba(255, 220, 120, 0.12);
 
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
 }
 
 /* SOL */
@@ -922,7 +929,7 @@ main {
 
     background: rgba(60, 70, 85, 0.18);
 
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
 }
 
 /* CHUVA ATIVA */
@@ -993,7 +1000,7 @@ main {
     background:
         rgba(120, 130, 145, 0.18);
 
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
 }
 
 /* ATIVO */
@@ -1382,7 +1389,7 @@ main {
    
     background: rgba(170, 210, 255, 0.12);
 
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
 }
 
 .partly-overlay.active {
@@ -1645,6 +1652,40 @@ main {
         0 6px 14px rgba(0,0,0,0.15);
 
     transition: 0.3s;
+}
+
+/* =========================
+   COMPACTAR COLUNA WEATHER+TEMP
+   (reduz altura para alinhar com
+    coluna DAYS e calendário)
+========================= */
+
+.weather-temp-col {
+
+    gap: 4px;
+}
+
+.weather-temp-col .board-card {
+
+    padding: 9px 14px;
+}
+
+.weather-temp-col .board-title {
+
+    padding: 10px 14px;
+}
+
+.weather-temp-col .weather-card,
+.weather-temp-col .temp-card {
+
+    font-size: 18px;
+
+    gap: 10px;
+}
+
+.weather-temp-col .weather-icon {
+
+    font-size: 26px;
 }
 
 /* ÍCONES */
@@ -2777,7 +2818,7 @@ body {
 
     z-index: 7;
 
-    backdrop-filter: blur(2px) brightness(0.85);
+    backdrop-filter: blur(12px) brightness(0.82);
 
     background: rgba(255, 30, 0, 0.07);
 
@@ -3003,7 +3044,7 @@ body {
 
     z-index: 7;
 
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(10px);
 
     background: rgba(255, 160, 30, 0.08);
 
@@ -3148,7 +3189,7 @@ body {
 
     z-index: 7;
 
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(10px);
 
     background: rgba(80, 200, 180, 0.08);
 
@@ -3236,7 +3277,7 @@ body {
 
     z-index: 7;
 
-    backdrop-filter: blur(2px) brightness(0.82);
+    backdrop-filter: blur(12px) brightness(0.78);
 
     background: rgba(20, 50, 120, 0.15);
 
